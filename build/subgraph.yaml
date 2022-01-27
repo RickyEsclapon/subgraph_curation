@@ -1,0 +1,30 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Curation
+    network: mainnet
+    source:
+      address: "0x8FE00a685Bcb3B2cc296ff6FfEaB10acA4CE1538"
+      abi: Curation
+      startBlock: 11446775
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Signalled
+        - Burned
+        - Collected
+      abis:
+        - name: Curation
+          file: Curation/abis/Curation.json
+      eventHandlers:
+        - event: Signalled(indexed address,indexed bytes32,uint256,uint256,uint256)
+          handler: handleSignalled
+        - event: Burned(indexed address,indexed bytes32,uint256,uint256)
+          handler: handleBurned
+        - event: Collected(indexed bytes32,uint256)
+          handler: handleCollected
+      file: Curation/Curation.wasm

@@ -1,0 +1,24 @@
+type Signalled @entity {
+  id: ID!
+  curator: Bytes! # address
+  subgraphDeploymentID: Bytes! # bytes32
+  tokens: BigInt! # uint256
+  signal: BigInt! # uint256
+  curationTax: BigInt! # uint256
+}
+
+type Burned @entity {
+  id: ID!
+  curator: Bytes! # address
+  subgraphDeploymentID: Bytes! # bytes32
+  tokens: BigInt! # uint256
+  signal: BigInt! # uint256
+}
+
+type Collected @entity {
+  id: ID!
+  subgraphDeploymentID: Bytes! # bytes32
+  tokens: BigInt! # uint256
+}
+
+
